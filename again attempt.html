@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Proposal</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+        button{
+            border: 2px solid black;
+            border-radius: 3px;
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px;
+            color: black;
+            position: relative;
+        }
+        button:hover{
+            transition: all 0.3s;
+            /* background-color: hsl(84, 100%, 30%) !important; */
+            filter: brightness(85%);
+        }
+        </style>
+        <script>
+        function accept() {
+            const selects = document.getElementsByClassName("content")
+            selects[0].style = "visibility: hidden;"
+            var image = document.getElementById("image")
+            image.src="images/love you.webp"
+            var status = document.getElementById("status")
+            status.innerHTML="YAY! I'll Love You Forever and Ever!!!"
+            var head = document.getElementById("header")
+            head.innerHTML="Take a flower sweetheart <3"
+        }
+        function hover(){
+            var reject = document.getElementById('reject')
+            reject.style = "position: relative; transition: all 0.2s; background-color:red;"
+            var x = Math.floor(Math.random() * 500); // generate a random x coordinate
+            var y = Math.floor(Math.random() * 200); // generate a random y coordinate
+            reject.style.top = y + 'px'; // set the top position
+            reject.style.left = x + 'px'; // set the left position
+            var status = document.getElementById('status')
+            status.innerHTML="You thought you even had an option?"
+            var image = document.getElementById('image')
+            image.src = "images/really.webp"
+        }
+        document.addEventListener('DOMContentLoaded',function () {
+        var reject = document.getElementById('reject');
+        reject.addEventListener('mouseover', hover);
+        });
+        </script>
+    </head>
+    <body style="background-color: beige;">
+        <div class="question" style=" text-align: center;">
+          <img alt="marry me?" id="image" style="position:static; height: 200px;"src="images/marryme.webp">
+          <div style="margin: 5px;">
+            <span id="header" style="border: 2px solid black; font-size: 22px; padding: 5px; border-radius: 5px;"><b>Would You Marry Me?</b></span>
+          </div>
+        </div>
+        <div class="content" style="text-align: center; margin: 100px; height: 100px;">
+          <button id="accept" onclick="accept()" style="position: static; background-color: greenyellow;">Yes</button>
+          <button id="reject" onclick="reject()" style="background-color: red;">No</button>
+        </div>
+        <div style="text-align: center;">
+          <p id="status" style="font-size: 30px;"></p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+      button{
+        border: 2px solid black;
+        border-radius: 3px;
+        font-size: 30px;
+        padding: 10px;
+        margin: 10px;
+        color: black;
+        /* transition: all 0.2s; */
+      }
+      button:hover{
+        transition: all 0.3s;
+        /* background-color: hsl(84, 100%, 30%) !important; */
+        filter: brightness(85%);
+      }
+      a{
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+    <script>
+      var rejected = Boolean(false)
+      function accept() {
+        var image = document.getElementById("image")
+        image.src="images/love you.webp"
+        var status = document.getElementById("status")
+        status.innerHTML="YAY! I'll Love You Forever and Ever!!!"
+        var head = document.getElementById("header")
+        head.innerHTML="Take a flower sweetheart <3"
+        const selects = document.getElementsByClassName("content")
+        selects[0].style = "visibility: hidden;"
+      }
+      function reject(){
+        rejected = Boolean(true)
+        const selects = document.getElementsByClassName("content")
+        selects[0].style = "visibility: hidden;"
+        var image = document.getElementById("image")
+        image.src = "images/rejected.png"
+        var head = document.getElementById("header")
+        head.innerHTML = "But ... But I thought you loved me..."
+        var status = document.getElementById("status")
+        status.innerHTML = "هونت عليكي يا بطة :("
+        var again = document.getElementById("again")
+        again.style = "visibility: visible;"
+      }
+      function hover(){
+        var image = document.getElementById("image")
+        image.src = "images/thinking.webp"
+        var status = document.getElementById("status")
+        status.innerHTML = "Are you sure about that?🥺"
+      }
+      function unhover(){
+        if (!rejected){
+        var image = document.getElementById("image")
+        image.src = "images/marryme.webp"
+        var status = document.getElementById("status")
+        status.innerHTML = "Yes! Please reconsider🥹"
+        }
+      }
+      document.addEventListener('DOMContentLoaded',function () {
+      var reject = document.getElementById('reject');
+      reject.addEventListener('mouseover', hover);
+      reject.addEventListener('mouseout',unhover);
+      reject.addEventListener('click', reject)
+      });
+    </script>
+  </head>
+  <body style="background-color: beige;">
+    <div class="question" style=" text-align: center;">
+      <img id="image" style="position:static; height: 200px;"src="images/marryme.webp">
+      <div style="margin: 5px;">
+        <span id="header" style="border: 2px solid black; font-size: 22px; padding: 5px; border-radius: 5px;"><b>Would You Marry Me?</b></span>
+      </div>
+    </div>
+    <div class="content" style="text-align: center; margin: 100px; height: 100px;">
+      <button id="accept" onclick="accept()" style="background-color: greenyellow;">Yes</button>
+      <button id="reject" onclick="reject()" style="background-color: red;">No</button>
+    </div>
+    <div style="text-align: center;">
+      <a href="again attempt.html"><button id="again" style="visibility: hidden;">Try Again</button></a>
+      <p id="status" style="font-size: 30px;"></p>
+    </div>
+  </body>
+</html>
